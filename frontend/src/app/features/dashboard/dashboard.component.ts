@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { catchError, of, tap } from 'rxjs';
+import { Eye, Link, LucideAngularModule, RotateCcw } from 'lucide-angular';
 import { SocketService } from '../../core/services/socket.service';
-import { LoginComponent } from "../../shared/components/login/login.component";
 import { NamesComponent } from "../../shared/components/names/names.component";
-import { LucideAngularModule, Eye, RotateCcw, Link } from 'lucide-angular';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-dashboard',

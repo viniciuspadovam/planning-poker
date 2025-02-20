@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { SocketService } from '../../../core/services/socket.service';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SocketService } from '../../core/services/socket.service';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, FormsModule],
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
