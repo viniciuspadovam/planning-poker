@@ -1,27 +1,26 @@
 import { Injectable } from '@angular/core';
-import { SocketService } from './socket.service';
-import { catchError, of, tap } from 'rxjs';
+import { catchError, Observable, of, Subject, tap } from 'rxjs';
 import { User } from '../model/user';
+import { SocketService } from './socket.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private static _users: User[];
+  private _users: Subject<User[]> = new Subject();
 
-  constructor(private socketService: SocketService) {
-      this.socketService.on('sign_in').pipe(
-        tap((users: User[]) => {
-          console.log(users);
-          UserService._users = users;
-        }),
-        catchError(err => of(err))
-      ).subscribe();
-    }
+  constructor(private socketService: SocketService) {}
 
-    get users(): User[] {
-      return UserService._users;
-    }
+  get users(): Observable<User[]> {
+    return this._users.asObservable();
+  }
+
+  public init(): Observable<User[]> {
+    return this.socketService.on('sign_in').pipe(
+      tap((users: User[]) => this._users.next(users)),
+      catchError(err => of(err))
+    );
+  }
   
 }

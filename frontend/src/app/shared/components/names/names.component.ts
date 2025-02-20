@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SocketService } from '../../../core/services/socket.service';
 import { catchError, of, tap } from 'rxjs';
 import { CardComponent } from "../card/card.component";
 import { User } from '../../../core/model/user';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-names',
@@ -14,12 +15,9 @@ export class NamesComponent {
 
   public users: User[] = [];
 
-  constructor(private socketService: SocketService) {
-    this.socketService.on('sign_in').pipe(
-      tap((users: User[]) => {
-        console.log(users);
-        this.users = users;
-      }),
+  constructor(private userService: UserService) {
+    this.userService.users.pipe(
+      tap(users => this.users = users),
       catchError(err => of(err))
     ).subscribe();
   }
