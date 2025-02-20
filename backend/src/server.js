@@ -1,34 +1,29 @@
-const express = require('express');
-const http = require("http").createServer();
-const io = require("socket.io")(http, {
-    cors: {
-      origin: "*",
-    },
-});
-const cors = require("cors");
-
-const app = express();
-app.use(cors());
+import { User } from './user.js';
+import { io, server } from './server.config.js';
 
 const PORT = 8080;
-let users = [];
+let users = new User();
 
 io.on('connection', (socket) => {
     console.log(`=== User ${socket.id} connected ===`);
 
-    socket.on('sign_in', (username) => {
-        users.push({ id: socket.id, username });
-        io.emit('sign_in', users);
+    socket.on('sign_in', username => {
+        users.add(username, socket.id);
+        io.emit('sign_in', users.all);
     });
 
-    socket.on('select_card', () => {});
+    socket.on('select_card', card => {
+        users.selectCard(card, socket.id);
+        io.emit('select_card', users.all);
+    });
 
     socket.on('clear_cards', () => {});
 
     socket.on('disconnect', () => {
         console.log(`=== User ${socket.id} disconnected ===`);
-        io.emit('sign_in', users.filter(user => user.id === socket.id).pop());
+        users.remove(socket.id);
+        io.emit('sign_in', users.all);
     });
 });
 
-http.listen(PORT, () => console.info(`Server is running at http://localhost:${PORT}`));
+server.listen(PORT, () => console.info(`Server is running at http://localhost:${PORT}`));
