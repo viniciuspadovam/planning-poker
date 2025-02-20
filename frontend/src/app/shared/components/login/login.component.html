@@ -1,0 +1,12 @@
+@if(isVisible) {
+    <div class="absolute top-0 left-0 flex justify-center items-center w-lvw h-lvh bg-[#333]/75">
+        <div class="w-[280px] rounded-2xl shadow-xl p-8 bg-white">
+            <form class="flex flex-col gap-1.5" (submit)="login()">
+                <label for="name">Digite seu nome</label>
+                <input [(ngModel)]="name" id="name" name="name" type="text" class="border rounded-sm border-[#333] p-1"/>
+            
+                <button class="bg-[#2b58de] hover:bg-[#1d44b8] transition text-white rounded-sm p-2 cursor-pointer mt-1.5">Confirmar</button>
+            </form>
+        </div>
+    </div>
+}

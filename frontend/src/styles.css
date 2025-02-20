@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+@import "tailwindcss";
+
+* {
+    font-family: "Poppins", serif;
+}
+
+/*
+    #1d44b8
+    #214cce
+    #2b58de
+    #577ae4
+    #6d8ce8
+    #839deb
+*/

@@ -1,0 +1,8 @@
+<div class="grid grid-cols-6 gap-y-5 justify-items-center mt-5">
+    @for(user of users; track user) {
+        <div class="flex flex-col items-center gap-2 w-min">
+            <app-card></app-card>
+            <span>{{user.username}}</span>
+        </div>
+    }
+</div>
