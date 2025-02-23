@@ -13,4 +13,15 @@ const io = new Server(server, {
     }
 });
 
-export { server, io };
+const PORT = 8080;
+
+const SOCKET_EVENTS = {
+    connection: 'connection',
+    disconnect: 'disconnect',
+    signIn: 'sign_in',
+    selectCard: 'select_card',
+    clearCards: 'clear_cards',
+    allUsers: 'all_users'
+}
+
+export { server, io, PORT, SOCKET_EVENTS };

@@ -1,31 +1,30 @@
 import { User } from './user.js';
-import { io, server } from './server.config.js';
+import { io, PORT, server, SOCKET_EVENTS } from './server.config.js';
 
-const PORT = 8080;
 let users = new User();
 
-io.on('connection', (socket) => {
+io.on(SOCKET_EVENTS.connection, (socket) => {
     console.log(`=== User ${socket.id} connected ===`);
 
-    socket.on('sign_in', username => {
+    socket.on(SOCKET_EVENTS.signIn, username => {
         users.add(username, socket.id);
-        io.emit('sign_in', users.all);
+        io.emit(SOCKET_EVENTS.allUsers, users.all);
     });
 
-    socket.on('select_card', card => {
+    socket.on(SOCKET_EVENTS.selectCard, card => {
         users.selectCard(card, socket.id);
-        io.emit('sign_in', users.all);
+        io.emit(SOCKET_EVENTS.allUsers, users.all);
     });
 
-    socket.on('clear_cards', () => {
+    socket.on(SOCKET_EVENTS.clearCards, () => {
         users.resetCards();
-        io.emit('sign_in', users.all);
+        io.emit(SOCKET_EVENTS.allUsers, users.all);
     });
 
-    socket.on('disconnect', () => {
+    socket.on(SOCKET_EVENTS.disconnect, () => {
         console.log(`=== User ${socket.id} disconnected ===`);
         users.remove(socket.id);
-        io.emit('sign_in', users.all);
+        io.emit(SOCKET_EVENTS.allUsers, users.all);
     });
 });
 
