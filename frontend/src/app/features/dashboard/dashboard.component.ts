@@ -4,6 +4,7 @@ import { NamesComponent } from "../../shared/components/names/names.component";
 import { LoginComponent } from '../login/login.component';
 import { OptionCardSelectComponent } from "../../shared/components/option-card-select/option-card-select.component";
 import { UserService } from '../../core/services/user.service';
+import { SelectionType } from '../../core/model/dashboard';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,7 @@ export class DashboardComponent {
     restart: RotateCcw,
     link: Link
   };
+  public selectionType: SelectionType = 'days';
 
   constructor(private userService: UserService) {}
 
