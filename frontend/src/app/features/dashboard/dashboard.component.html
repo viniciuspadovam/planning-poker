@@ -1,9 +1,42 @@
-<main class="w-dvw h-dvh">
+<main class="flex flex-col items-center mt-7">
     <app-login></app-login>
 
-    <div class="mx-auto">
-        <section class="w-3xl mx-auto min-h-95">
-            <app-names></app-names>
-        </section>
-    </div>
+    <section class="w-5xl min-h-95">
+        <app-names></app-names>
+    </section>
+
+    <section class="w-5xl border rounded-2xl bg-gray-200 mt-6">
+        <div class="flex justify-between border-b py-4 px-12">
+            <div>
+                <p class="font-bold text-[#2b58de]">{{roomName}}</p>
+            </div>
+            <div>
+                Média: <span class="text-[#2b58de] font-medium text-xl">{{average}}</span>
+            </div>
+        </div>
+        <div class="flex justify-evenly py-14">
+            <button class="flex flex-col items-center cursor-pointer" (click)="flipAllToFront()">
+                <span class="bg-white rounded-full p-4">
+                    <lucide-icon [img]="icons.eye" class="text-yellow-500 w-10 h-10"></lucide-icon>
+                </span>
+                <span class="mt-4 text-center">Revelar</span>
+            </button>
+            <button class="flex flex-col items-center cursor-pointer" (click)="resetAllCards()">
+                <span class="bg-white rounded-full p-4">
+                    <lucide-icon [img]="icons.restart" class="text-[#6d8ce8] w-10 h-10"></lucide-icon>
+                </span>
+                <span class="mt-4 text-center">Reiniciar</span>
+            </button>
+            <button class="flex flex-col items-center cursor-pointer">
+                <span class="bg-white rounded-full p-4">
+                    <lucide-icon [img]="icons.link" class="text-[#839deb] w-10 h-10"></lucide-icon>
+                </span>
+                <span class="mt-4 text-center">Convidar</span>
+            </button>
+        </div>
+    </section>
+
+    <section class="mt-8">
+        <app-option-card-select></app-option-card-select>
+    </section>
 </main>
