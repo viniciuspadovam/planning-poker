@@ -6,14 +6,14 @@
   } @else {
     <div flipableCard class="relative w-[100px] h-[130px] transition-transform duration-700 transform-3d">
       <!-- Frente da Carta -->
-        <div class="absolute w-full h-full px-2 backface-hidden bg-white rounded-[6px] shadow-lg flex justify-between items-stretch">
+        <div class="absolute w-full h-full px-2 backface-hidden bg-white rounded-[6px] shadow-lg flex justify-between items-stretch rotate-y-180">
           <div class="text-lg font-bold text-[#577ae4]">{{value}}</div>
           <div class="flex justify-center items-center text-4xl text-[#2b58de]">{{value}}</div>
           <div class="text-lg font-bold text-[#577ae4] transform rotate-180">{{value}}</div>
         </div>
         
         <!-- Costas da Carta -->
-        <div class="absolute w-full h-full backface-hidden transform rotate-y-180">
+        <div class="absolute w-full h-full backface-hidden transform">
           <img src="assets/imgs/black-card-back.webp" class="h-[130px] rounded-[6px] shadow-lg" alt="black-card-back">
         </div>
     </div>

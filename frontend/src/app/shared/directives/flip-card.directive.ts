@@ -12,7 +12,7 @@ export class FlipCardDirective {
 
   setFlipState(flipped: boolean) {
     this.isFlipped = flipped;
-    const transformValue = this.isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+    const transformValue = this.isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)';
     this.renderer.setStyle(this.el.nativeElement, 'transform', transformValue);
   }
 
