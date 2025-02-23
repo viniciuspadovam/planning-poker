@@ -2,10 +2,11 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { CommonModule } from '@angular/common';
 import { Component, Input, ViewChild } from '@angular/core';
 import { FlipCardDirective } from '../../directives/flip-card.directive';
+import { CircleHelp, LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-card',
-  imports: [CommonModule, FlipCardDirective],
+  imports: [CommonModule, FlipCardDirective, LucideAngularModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
   animations: [
@@ -25,6 +26,7 @@ export class CardComponent {
   public isFlipped = true;
   @Input()
   public value: number | undefined;
+  public helpIcon = CircleHelp;
 
   flipTo(state: boolean) {
     if(this.value) {

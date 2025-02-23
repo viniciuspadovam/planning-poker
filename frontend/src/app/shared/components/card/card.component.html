@@ -1,7 +1,8 @@
 <ng-container>
   @if(!value) {
     <div class="w-[100px] h-[130px] bg-[#fff] border border-[#333] rounded-[6px] shadow-lg flex justify-center items-center">
-      <span class="text-5xl text-[#333]">?</span>
+      <!-- <span class="text-5xl text-[#333]">?</span> -->
+      <lucide-icon [img]="helpIcon" class="text-[#333] w-14 h-14"></lucide-icon>
     </div>
   } @else {
     <div flipableCard class="relative w-[100px] h-[130px] transition-transform duration-700 transform-3d">
