@@ -14,10 +14,13 @@ io.on('connection', (socket) => {
 
     socket.on('select_card', card => {
         users.selectCard(card, socket.id);
-        io.emit('select_card', users.all);
+        io.emit('sign_in', users.all);
     });
 
-    socket.on('clear_cards', () => {});
+    socket.on('clear_cards', () => {
+        users.resetCards();
+        io.emit('sign_in', users.all);
+    });
 
     socket.on('disconnect', () => {
         console.log(`=== User ${socket.id} disconnected ===`);

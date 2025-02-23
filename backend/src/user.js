@@ -23,4 +23,8 @@ export class User {
         if(index > -1) Object.assign(this.#users[index], { card });
     }
 
+    resetCards() {
+        this.#users.map(user => delete user.card);
+    }
+
 }
