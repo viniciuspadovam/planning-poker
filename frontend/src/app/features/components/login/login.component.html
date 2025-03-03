@@ -1,0 +1,17 @@
+<ng-container>
+    @if(isVisible) {
+        <div class="w-full h-screen absolute bg-[#333]/75 flex justify-center items-center">
+            <div class="w-[500px] bg-white px-14 py-10 rounded-[8px]">
+                <form #loginForm="ngForm" class="flex flex-col">
+                    @if(!hasRoom) {
+                        <label for="room">Username</label>
+                        <input type="text" name="roomName" id="roomName" [(ngModel)]="roomName" #room="ngModel" class="border p-3 rounded-[6px]">
+                    }
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" [(ngModel)]="username" #name="ngModel" class="border p-3 rounded-[6px]">
+                    <button (click)="joinRoom()" class="cursor-pointer bg-[#006494] text-white p-4 mt-4 rounded-[6px]">Entrar</button>
+                </form>
+            </div>
+        </div>
+    }
+</ng-container>
