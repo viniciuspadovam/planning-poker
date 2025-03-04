@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { SocketService } from './core/services/socket.service';
-import { LoginComponent } from "./features/components/login/login.component";
 import { RoomService } from './core/services/room.service';
+import { LoginComponent } from './features/login/login.component';
 
 @Component({
   selector: 'app-root',
