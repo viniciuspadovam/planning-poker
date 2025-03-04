@@ -22,10 +22,7 @@ export class AppComponent {
   }
 
   private onUpdateUsers(): void {
-    this.roomService.updateUsers().subscribe((data) => {
-      console.log(data)
-      this.users = data
-    });
+    this.roomService.updateUsers().subscribe((data) => this.users = data);
   }
 
 }

@@ -22,7 +22,6 @@ export class LoginComponent {
   }
 
   public joinRoom(): void {
-    console.log(this.roomName, this.username)
     this.roomService.joinRoom(this.roomName, this.username);
     this.close();
   }
