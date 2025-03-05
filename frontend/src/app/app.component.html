@@ -1,9 +1,8 @@
-<main>
-    <section>
-        <app-login></app-login>
-    </section>
-    <section>
-        <h1 class="text-lg font-bold">Teste socket</h1>
-        <p>{{usersStringify}}</p>
-    </section>
-</main>
+<ng-container>
+    <app-login></app-login>
+    <main class="h-screen w-5xl mx-auto flex flex-col justify-between">
+        <section>
+            <app-dashboard></app-dashboard>
+        </section>
+    </main>
+</ng-container>
